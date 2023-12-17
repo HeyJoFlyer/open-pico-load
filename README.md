@@ -12,14 +12,14 @@ This project is an open-source DC load built using a Raspberry Pi Pico microcont
 
 ## Requirements
 
-- Raspberry Pi Pico microcontroller with circuitpython (you can use the one provided in this repo, i would recommend downloading the newest `.uf2`file from [here](https://circuitpython.org/board/raspberry_pi_pico/)`) A Raspberry Pi Pico will work as well but would be wasted!
+- Raspberry Pi Pico microcontroller with circuitpython (you can use the one provided in this repo, i would recommend downloading the newest `.uf2`file from [here](https://circuitpython.org/board/raspberry_pi_pico/)) A Raspberry Pi Pico W will work as well, but would be wasted!
 - OLED SSD 1306
 - Rotary Encoder
 - Big Power Resistor
 - 2 Mosfets
 - Big Mosfet Heatsink
 - 5V Linear Regulator
-- Resistors, capacitors, diodes and other electronic components (refer to the schematic or for details) The values are just approximate! Your values will limit the maximum voltage for the voltage dividers as the Raspberry Pi Pico has a max ADC voltage of 3,3V. The capacitor choice will also affect the maximum input voltage.
+- Resistors, capacitors, diodes and other electronic components (refer to the schematic or for details) The values are just **approximate**! Your values will **limit the maximum voltage** for the voltage dividers as the Raspberry Pi Pico has a max ADC voltage of 3,3V. The capacitor choice will also affect the maximum input voltage.
 - Soldering iron and solder
 - PCB (from JLCPCB or other manufactures, I got mine for 5€)
 
@@ -27,12 +27,12 @@ This project is an open-source DC load built using a Raspberry Pi Pico microcont
 
 1. `git clone https://github.com/HeyJoFlyer/open-pico-load.git`.
 
-2. Connect the components based on the schematic provided (`schematic.svg`).
-![alt text](https://github.com/HeyJoFlyer/open-pico-load/raw/schematic.svg "Logo Title Text 1")
+1. Connect the components based on the schematic provided (`schematic.svg`).
+![alt text](https://raw.githubusercontent.com/HeyJoFlyer/open-pico-load/main/schematic.svg "Logo Title Text 1")
 
-4. Flash the Circuitpython firmware onto the Raspberry Pi Pico.
+1. Flash the Circuitpython firmware onto the Raspberry Pi Pico.
 
-5. Upload the code and the libraries (which only work for Circuipython 8.x) to the Pico with the file explorer.
+1. Upload the code and the libraries (which only work for Circuipython 8.x) to the Pico with the file explorer.
 
 ## Usage
 
@@ -54,4 +54,3 @@ Contributions are welcome! If you'd like to contribute to this project, feel fre
 
 This project is licensed under the [MIT License](LICENSE).
 Circuipython and the libraries included are licensed under the [MIT License](LICENSE).
-
