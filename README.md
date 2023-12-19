@@ -28,7 +28,7 @@ This project is an open-source DC load built using a Raspberry Pi Pico microcont
 1. `git clone https://github.com/HeyJoFlyer/open-pico-load.git`.
 
 1. Connect the components based on the schematic provided (`schematic.svg`).
-![alt text](https://raw.githubusercontent.com/HeyJoFlyer/open-pico-load/main/schematic.svg "Logo Title Text 1")
+![alt text](https://raw.githubusercontent.com/HeyJoFlyer/open-pico-load/main/schematic.svg "schematic")
 
 1. Flash the Circuitpython firmware onto the Raspberry Pi Pico.
 
@@ -54,3 +54,12 @@ Contributions are welcome! If you'd like to contribute to this project, feel fre
 
 This project is licensed under the [MIT License](LICENSE).
 Circuipython and the libraries included are licensed under the [MIT License](LICENSE).
+
+## Known Bugs (but the load works in real life!):
+
+- The 2 BJTs are difficult to solder but are doable
+- The BACK button is not yet implemented in the software
+- Current Tracking is not very smooth (I haven't found a good PID alternative in Circuitpython), so the current jumps around a little.
+- No logging (yet!)
+- Slim micro USB cable is needed to plug into the Raspberry Pi Pico
+- Circuitpython has a bug with the display driver, so you need to powercycle the board after uploding new `code.py`.
