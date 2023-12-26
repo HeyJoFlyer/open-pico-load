@@ -1,6 +1,6 @@
 # Raspberry Pi Pico Open Source DC Load with OLED Display
 
-This project is an open-source DC load built using a Raspberry Pi Pico microcontroller and an OLED display. It allows users to simulate different loads on power sources, monitor voltage, current, and other parameters, and display them on an OLED screen.
+This project is an open-source DC load built using a Raspberry Pi Pico microcontroller and an OLED display. It allows users to simulate different loads on power sources, to monitor voltage, current, and power, and display them on an OLED screen.
 
 ## Features
 
@@ -23,7 +23,7 @@ This project is an open-source DC load built using a Raspberry Pi Pico microcont
 - 5V Linear Regulator
 - Resistors, capacitors, diodes and other electronic components (refer to the schematic or for details) The values are just **approximate**! Your values will **limit the maximum voltage** for the voltage dividers as the Raspberry Pi Pico has a max ADC voltage of 3,3V. The capacitor choice will also affect the maximum input voltage.
 - Soldering iron and solder
-- PCB (from JLCPCB or other manufactures, I got mine for 5€)
+- PCB (from JLCPCB, PCBWAY or other manufactures, I got mine for 5€)
 
 ## Installation
 
@@ -62,6 +62,5 @@ Circuipython and the libraries included are licensed under the [MIT License](LIC
 - The BACK button is not yet implemented in the software
 - Current Tracking is not very smooth (I haven't found a good PID alternative in Circuitpython), so the current jumps around a little.
 - No logging (yet!)
-- Slim micro USB cable is needed to plug into the Raspberry Pi Pico
 - Circuitpython has a bug with the display driver, so you need to powercycle the board after uploding new `code.py`.
 - MOSFETs sometimes blow up if you use to much current or power (I used two active mosfets).
