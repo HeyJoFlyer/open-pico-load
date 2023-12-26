@@ -64,3 +64,4 @@ Circuipython and the libraries included are licensed under the [MIT License](LIC
 - No logging (yet!)
 - Slim micro USB cable is needed to plug into the Raspberry Pi Pico
 - Circuitpython has a bug with the display driver, so you need to powercycle the board after uploding new `code.py`.
+- MOSFETs sometimes blow up if you use to much current or power (I used two active mosfets).
