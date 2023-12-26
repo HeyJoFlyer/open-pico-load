@@ -9,6 +9,8 @@ This project is an open-source DC load built using a Raspberry Pi Pico microcont
 - Display real-time data on an OLED screen.
 - Open-source design using Raspberry Pi Pico.
 - Mine does a maximum 36V and around 7A, max power around 100W
+- Handsolderable THT components only
+- No exact size or spec requirements for components
 
 ## Requirements
 
@@ -57,7 +59,6 @@ Circuipython and the libraries included are licensed under the [MIT License](LIC
 
 ## Known Bugs (but the load works in real life!):
 
-- The 2 BJTs are difficult to solder but are doable
 - The BACK button is not yet implemented in the software
 - Current Tracking is not very smooth (I haven't found a good PID alternative in Circuitpython), so the current jumps around a little.
 - No logging (yet!)
