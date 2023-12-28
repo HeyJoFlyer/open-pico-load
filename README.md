@@ -61,6 +61,5 @@ Circuipython and the libraries included are licensed under the [MIT License](LIC
 
 - The BACK button is not yet implemented in the software
 - Current Tracking is not very smooth (I haven't found a good PID alternative in Circuitpython), so the current jumps around a little.
-- No logging (yet!)
 - Circuitpython has a bug with the display driver, so you need to powercycle the board after uploding new `code.py`.
-- MOSFETs sometimes blow up if you use to much current or power (I used two active mosfets).
+- MOSFETs sometimes blow up (short circuit) if you use to much current or power (I used two active mosfets).

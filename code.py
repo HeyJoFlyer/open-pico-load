@@ -78,10 +78,23 @@ def get_power(load_enabled):
     voltage = (voltage_adc.value * VOLT_TO_VOLT / 65536 * 3.3) + VOLTAGE_OFFSET
     if voltage < 0:
         voltage = 0
-    power = "%.6f" % (current * voltage)
-    voltage = "%.6f" % voltage
-    display_current = "%.6f" % current
-    return current, display_current, voltage, power
+    power = "%.4f" % (current * voltage)
+    display_voltage = "%.5f" % voltage
+    display_current = "%.5f" % current
+    return current, display_current, display_voltage, voltage, power
+
+def integrate(voltage, current, old_time, old_voltage, old_current, total_energy, amp_hours): # This function logs and integrates the total power consumption
+    integrate_time  = time.time()
+    delta_time = (integrate_time - old_time) / 3600
+    avg_current = (current + old_current) / 2
+    amp_hours_this_cycle = avg_current * delta_time
+    amp_hours += amp_hours_this_cycle
+    avg_voltage = (old_voltage + voltage) / 2
+    energy_this_cycle = amp_hours_this_cycle * avg_voltage
+    total_energy += energy_this_cycle
+    total_energy_display = "%.4f" % total_energy
+    amp_hours_display = "%.4f" % amp_hours
+    return integrate_time, voltage, current, total_energy, amp_hours, total_energy_display, amp_hours_display,
 
 def main():
     # display setup
@@ -102,10 +115,18 @@ def main():
     current_setting = 1 # in Amps
     old_button_time = time.time()
     i = 0
+
+    total_energy = float(0)
+    amp_hours = float(0)
+    old_time = time.time()
+    start_time = time.time()
+    old_current, _, _, old_voltage, _ = get_power(False)
+
     while True:
         last_position = position
         position = encoder.position
-        current, display_current, voltage, power = get_power(load_enabled)
+        current, display_current, display_voltage, voltage, power = get_power(load_enabled)
+        old_time, old_voltage, old_current, total_energy, amp_hours, total_energy_display, amp_hours_display = integrate(voltage, current, old_time, old_voltage, old_current, total_energy, amp_hours)
         if on_button.value == False:
             if time.time() - old_button_time > 1:
                 old_button_time = time.time()
@@ -133,10 +154,10 @@ def main():
 
         if i == 100: # only execute every 100th run
             pwm_value_decimal = round(pwm_value / (2 ** 16), 3)
-            text = f"\nTarget I: {current_setting}A\n\
-I: {display_current}A, {pwm_value_decimal}\n\
-U: {voltage}V\n\
-P: {power}W"
+            text = f"\nTarget I: {current_setting}A, {pwm_value_decimal}\n\
+I: {display_current}A, {amp_hours_display}Ah\n\
+U: {display_voltage}V, T: {round(time.time() - start_time, 1)}s\n\
+P: {power}W, {total_energy_display}Wh"
             main_label.text = text
             i = 0
         i += 1
